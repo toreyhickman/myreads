@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import BookcaseHeader from './bookcaseheader'
-import Bookshelf from './bookshelf'
+import Bookshelves from './bookshelves'
 import SearchLink from './searchlink'
 
 class Bookcase extends Component {
   state = {
-    shelves: [
+    bookshelves: [
       { title: "Currently Reading"},
       { title: "Want to Read"},
       { title: "Read" }
@@ -13,14 +13,12 @@ class Bookcase extends Component {
   }
 
   render() {
+    const { bookshelves } = this.state
+
     return (
       <div className="list-books">
         <BookcaseHeader />
-        <div className="list-books-content">
-          <div>
-            {this.state.shelves.map(shelf => < Bookshelf title={shelf.title} />)}
-          </div>
-        </div>
+        <Bookshelves bookshelves={bookshelves} />
         <SearchLink />
       </div>
     )
