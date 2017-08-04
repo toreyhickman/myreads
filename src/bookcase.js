@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import BookcaseHeader from './bookcaseheader'
 import Bookshelf from './bookshelf'
 
 class Bookcase extends Component {
@@ -14,9 +15,7 @@ class Bookcase extends Component {
   render() {
     return (
       <div className="list-books">
-        <div className="list-books-title">
-          <h1>MyReads</h1>
-        </div>
+        <BookcaseHeader />
         <div className="list-books-content">
           <div>
             {this.state.shelves.map(shelf => < Bookshelf title={shelf.title} />)}
