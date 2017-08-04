@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import BookcaseHeader from './bookcaseheader'
 import Bookshelf from './bookshelf'
+import SearchLink from './searchlink'
 
 class Bookcase extends Component {
   state = {
@@ -21,9 +21,7 @@ class Bookcase extends Component {
             {this.state.shelves.map(shelf => < Bookshelf title={shelf.title} />)}
           </div>
         </div>
-        <div className="open-search">
-          <Link to="/search">Add a book</Link>
-        </div>
+        <SearchLink />
       </div>
     )
   }
