@@ -4,8 +4,11 @@ import Bookshelf from './bookshelf'
 
 class BookShelves extends Component {
   static PropTypes = {
-    bookshelves: PropTypes.arrayOf(PropTypes.object)
+    bookshelves: PropTypes.arrayOf(PropTypes.object),
+    books: PropTypes.arrayOf(PropTypes.object)
   }
+
+  booksForShelf = (shelf) => this.props.books.filter(book => book.shelf === shelf.slug)
 
   render() {
     const { bookshelves } = this.props;
@@ -13,7 +16,7 @@ class BookShelves extends Component {
     return (
       <div className="list-books-content">
         <div>
-          {bookshelves.map((shelf, i) => <Bookshelf key={i} title={shelf.title} />)}
+          {bookshelves.map((shelf, i) => <Bookshelf key={i} title={shelf.title} books={this.booksForShelf(shelf)} />)}
         </div>
       </div>
     )
