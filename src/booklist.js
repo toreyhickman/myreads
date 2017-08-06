@@ -4,15 +4,16 @@ import BookListItem from './booklistitem'
 
 class BookList extends Component {
   static PropTypes = {
-    books: PropTypes.arrayOf(PropTypes.object)
+    books: PropTypes.arrayOf(PropTypes.object),
+    reshelve: PropTypes.func.isRequired
   }
 
   render() {
-    const { books } = this.props;
+    const { books, reshelve } = this.props;
 
     return (
       <ol className="books-grid">
-        {books.map((book, i) => <BookListItem key={i} book={book} />)}
+        {books.map((book, i) => <BookListItem key={i} book={book} reshelve={reshelve} />)}
       </ol>
     )
   }

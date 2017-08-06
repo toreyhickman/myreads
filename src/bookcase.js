@@ -6,7 +6,8 @@ import SearchLink from './searchlink'
 
 class Bookcase extends Component {
   static PropTypes = {
-    books: PropTypes.arrayOf(PropTypes.object)
+    books: PropTypes.arrayOf(PropTypes.object),
+    reshelve: PropTypes.func.isRequired
   }
 
   state = {
@@ -19,12 +20,12 @@ class Bookcase extends Component {
 
   render() {
     const { bookshelves } = this.state
-    const { books } = this.props
+    const { books, reshelve } = this.props
 
     return (
       <div className="list-books">
         <BookcaseHeader />
-        <Bookshelves bookshelves={bookshelves} books={books} />
+        <Bookshelves bookshelves={bookshelves} books={books} reshelve={reshelve}/>
         <SearchLink />
       </div>
     )

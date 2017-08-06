@@ -5,18 +5,19 @@ import Bookshelf from './bookshelf'
 class BookShelves extends Component {
   static PropTypes = {
     bookshelves: PropTypes.arrayOf(PropTypes.object),
-    books: PropTypes.arrayOf(PropTypes.object)
+    books: PropTypes.arrayOf(PropTypes.object),
+    reshelve: PropTypes.func.isRequired
   }
 
   booksForShelf = (shelf) => this.props.books.filter(book => book.shelf === shelf.slug)
 
   render() {
-    const { bookshelves } = this.props;
+    const { bookshelves, reshelve } = this.props;
 
     return (
       <div className="list-books-content">
         <div>
-          {bookshelves.map((shelf, i) => <Bookshelf key={i} title={shelf.title} books={this.booksForShelf(shelf)} />)}
+          {bookshelves.map((shelf, i) => <Bookshelf key={i} title={shelf.title} books={this.booksForShelf(shelf)} reshelve={reshelve} />)}
         </div>
       </div>
     )

@@ -4,18 +4,16 @@ import Book from './book'
 
 class BookListItem extends Component {
   static PropTypes = {
-    book: PropTypes.object.isRequired
+    book: PropTypes.object.isRequired,
+    reshelve: PropTypes.func.isRequired
   }
 
   render() {
-    const { book } = this.props
-    const thumbnail = book.imageLinks.thumbnail
-    const title = book.title
-    const author = book.authors[0]
+    const { book, reshelve } = this.props
 
     return (
       <li>
-        <Book title={title} author={author} thumbnail={thumbnail} />
+        <Book book={book} reshelve={reshelve} />
       </li>
     )
   }
