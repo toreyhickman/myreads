@@ -12,7 +12,7 @@ class Book extends Component {
     const { book, reshelve } = this.props
     const thumbnail = book.imageLinks.thumbnail
     const title = book.title
-    const author = book.authors[0]
+    const author = (book.authors || [])[0]
 
     return (
       <div className="book">
