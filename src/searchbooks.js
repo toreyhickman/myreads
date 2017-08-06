@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import * as BooksAPI from './BooksAPI'
 import SearchBar from './searchbar'
 import SearchResults from './searchresults'
 
@@ -12,13 +13,17 @@ class SearchBooks extends Component {
     books: []
   }
 
+  search = (searchTerms, maxResults = 50) => {
+    BooksAPI.search(searchTerms, maxResults).then(books => this.setState({books}))
+  }
+
   render() {
     const { books } = this.state
     const { reshelve } = this.props
 
     return (
       <div className="search-books">
-        <SearchBar />
+        <SearchBar search={this.search} />
         <SearchResults books={books} reshelve={reshelve} />
       </div>
     )
