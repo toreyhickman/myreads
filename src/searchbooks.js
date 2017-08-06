@@ -13,8 +13,11 @@ class SearchBooks extends Component {
     books: []
   }
 
-  search = (searchTerms, maxResults = 50) => {
-    BooksAPI.search(searchTerms, maxResults).then(books => this.setState({books}))
+  search = (searchTerms, maxResults = 50) => BooksAPI.search(searchTerms, maxResults).then(this.updateSearchResults)
+
+  updateSearchResults = (results) => {
+    const error = results.error
+    this.setState({books: error? [] : results})
   }
 
   render() {
