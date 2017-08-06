@@ -4,8 +4,8 @@ import Bookshelf from './bookshelf'
 
 class BookShelves extends Component {
   static PropTypes = {
-    bookshelves: PropTypes.arrayOf(PropTypes.object),
-    books: PropTypes.arrayOf(PropTypes.object),
+    bookshelves: PropTypes.arrayOf(PropTypes.object).isRequired,
+    books: PropTypes.arrayOf(PropTypes.object).isRequired,
     reshelve: PropTypes.func.isRequired
   }
 

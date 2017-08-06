@@ -5,7 +5,7 @@ import BookList from './booklist'
 class Bookshelf extends Component {
   static PropTypes = {
     title: PropTypes.string.isRequired,
-    books: PropTypes.arrayOf(PropTypes.object),
+    books: PropTypes.arrayOf(PropTypes.object).isRequired,
     reshelve: PropTypes.func.isRequired
   }
 
