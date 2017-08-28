@@ -6,7 +6,8 @@ import SearchResults from './searchresults'
 
 class SearchBooks extends Component {
   static PropTypes = {
-    reshelve: PropTypes.func.isRequired
+    reshelve: PropTypes.func.isRequired,
+    currentShelf: PropTypes.func.isRequired
   }
 
   state = {
@@ -21,13 +22,20 @@ class SearchBooks extends Component {
         if (results.error) {
           this.resetSearchResults()
         } else {
-          this.updateSearchResults(results)
+          this.updateSearchResults(this.shelfBooks(results))
         }
       })
     }
   }
 
   resetSearchResults = () => this.setState({books: []})
+
+  shelfBooks = (books) => books.map(this.assignShelf)
+
+  assignShelf = (book) => {
+    book.shelf = this.props.currentShelf(book.id)
+    return book
+  }
 
   updateSearchResults = (books) => {
     this.setState({books})

@@ -18,12 +18,19 @@ class BooksApp extends React.Component {
 
   refreshBooks = () => BooksAPI.getAll().then(books => this.setState({books}))
 
+  currentShelf = (bookId) => {
+    const bookOnShelf = this.findBookOnShelf(bookId)
+    return bookOnShelf ? bookOnShelf.shelf : "none"
+  }
+
+  findBookOnShelf = (bookId) => this.state.books.find(book => book.id === bookId)
+
   render() {
     const { books } = this.state
 
     return (
       <div className="app">
-        <Route exact path="/search" render={() => <SearchBooks reshelve={this.reshelve}/>} />
+        <Route exact path="/search" render={() => <SearchBooks currentShelf={this.currentShelf} reshelve={this.reshelve}/>} />
 
         <Route exact path="/" render={() => <Bookcase books={books} reshelve={this.reshelve} />} />
       </div>
