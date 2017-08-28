@@ -10,8 +10,13 @@ class Bookcase extends Component {
     reshelve: PropTypes.func.isRequired
   }
 
-  state = {
-    bookshelves: [
+  constructor(props) {
+    super(props);
+    this.defineBookshelves();
+  }
+
+  defineBookshelves = () => {
+    this.bookshelves = [
       { title: "Currently Reading", slug: "currentlyReading"},
       { title: "Want to Read", slug: "wantToRead"},
       { title: "Read", slug: "read" }
@@ -19,7 +24,7 @@ class Bookcase extends Component {
   }
 
   render() {
-    const { bookshelves } = this.state
+    const bookshelves = this.bookshelves
     const { books, reshelve } = this.props
 
     return (
